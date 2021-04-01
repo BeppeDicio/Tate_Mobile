@@ -7,6 +7,7 @@ import {
     ActivityIndicator,
     SafeAreaView, Button
 } from "react-native";
+import {BottomPopUp} from "../components/BottomPopUp";
 
 export default class UserView extends Component {
 
@@ -35,6 +36,16 @@ export default class UserView extends Component {
     }
 
     render() {
+
+        let popupRef = React.createRef();
+        const onShowPopup = () => {
+            popupRef.show()
+        }
+
+        const onClosePop = () => {
+            popupRef.close()
+        }
+
         if (this.state.isLoading) {
             return (
                 <View style={styles.container}>
@@ -56,7 +67,7 @@ export default class UserView extends Component {
                                 <Button
                                     style={styles.headerButton}
                                     title={"Filtri"}
-                                    onPress={() => console.log("Simple Button pressed")}
+                                    onPress={onShowPopup}
                                 />
                             </View>
                         </View>
@@ -69,6 +80,11 @@ export default class UserView extends Component {
                                   <Text>{item.email}</Text>
                                 </View>
                             }
+                        />
+                        <BottomPopUp
+                            title="Filters"
+                            ref={(target) => popupRef = target}
+                            onTouchOutside={onClosePop}
                         />
                     </SafeAreaView>
                 </>
