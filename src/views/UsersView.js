@@ -1,5 +1,12 @@
 import React, {Component, useState, useEffect} from "react";
-import {StyleSheet, Text, View, FlatList, ActivityIndicator} from "react-native";
+import {
+    StyleSheet,
+    Text,
+    View,
+    FlatList,
+    ActivityIndicator,
+    SafeAreaView, Button
+} from "react-native";
 
 export default class UserView extends Component {
 
@@ -36,43 +43,73 @@ export default class UserView extends Component {
             )
         } else {
             return (
-                <View style={styles.container}>
-                    <FlatList style={styles.flatlist}
-                        data={this.state.dataSource}
-                        keyExtractor={(x, i) => i}
-                        renderItem={({item}) =>
-                            <View style={styles.item}>
-                              <Text>{item.username}</Text>
-                              <Text>{item.email}</Text>
+                <>
+                    <SafeAreaView style={styles.container}>
+                        <View style={styles.header}>
+                            <View style={styles.headerBox}>
+                                <Text style={styles.headerText}></Text>
                             </View>
-                        }
-                    />
-                </View>
+                            <View style={styles.headerBox}>
+                                <Text style={styles.headerText}>Utenti Attivi</Text>
+                            </View>
+                            <View style={styles.headerBox}>
+                                <Button
+                                    style={styles.headerButton}
+                                    title={"Filtri"}
+                                    onPress={() => console.log("Simple Button pressed")}
+                                />
+                            </View>
+                        </View>
+                        <FlatList style={styles.flatl}
+                            data={this.state.dataSource}
+                            keyExtractor={(x, i) => i}
+                            renderItem={({item}) =>
+                                <View style={styles.item}>
+                                  <Text>{item.username}</Text>
+                                  <Text>{item.email}</Text>
+                                </View>
+                            }
+                        />
+                    </SafeAreaView>
+                </>
             )
         }
     }
 }
 
 const styles= StyleSheet.create({
-container: {
-flex: 1,
-alignSelf: 'stretch',
-backgroundColor: '#ffffff',
-alignItems: 'center',
-justifyContent: 'center'
-},
-item: {
-flex: 1,
-margin: 20,
-alignSelf: 'stretch',
-alignItems: 'center',
-justifyContent: 'center',
-borderBottomWidth: 1,
-borderBottomColor: '#eee'
-},
-flatlist: {
-alignSelf: 'stretch',
+    container: {
+        flex: 1,
+        alignSelf: 'stretch',
+        backgroundColor: '#ffffff',
+    },
+    item: {
+        height: 80,
+        alignSelf: 'stretch',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee'
+    },
+    flatl: {
+        alignSelf: 'stretch',
+    },
+    header: {
+        height: 60,
+        borderBottomWidth: 0.5,
+        borderBottomColor: '#000000',
+        flexDirection: 'row',
 
-}
+    },
+    headerBox: {
+        flex: 1
+    },
+    headerText: {
+        fontSize: 25,
+        marginTop: 10,
+    },
+    headerButton: {
+        marginTop: 10,
+    }
 })
 

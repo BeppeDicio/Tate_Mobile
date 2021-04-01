@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ac7f795-c03f-44ef-a5cc-c0955d970c20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ListItem.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/UsersApi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/UsersView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/UsersView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/UsersView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +45,8 @@
       <updated>1617197348810</updated>
       <workItem from="1617197351163" duration="2618000" />
       <workItem from="1617206625141" duration="9037000" />
-      <workItem from="1617265467120" duration="4326000" />
+      <workItem from="1617265467120" duration="7647000" />
+      <workItem from="1617283026837" duration="3059000" />
     </task>
     <servers />
   </component>
