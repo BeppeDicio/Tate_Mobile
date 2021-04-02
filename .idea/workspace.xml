@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ac7f795-c03f-44ef-a5cc-c0955d970c20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/BottomPopUp.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/gamer.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ListItem.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/UsersApi.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/UsersView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/UsersView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +37,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/resources" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -46,6 +54,10 @@
       <workItem from="1617206625141" duration="9037000" />
       <workItem from="1617265467120" duration="7647000" />
       <workItem from="1617283026837" duration="6492000" />
+      <workItem from="1617358720801" duration="1475000" />
+      <workItem from="1617361725343" duration="1947000" />
+      <workItem from="1617373208523" duration="487000" />
+      <workItem from="1617381217253" duration="5335000" />
     </task>
     <servers />
   </component>
