@@ -112,7 +112,7 @@ export default class UserView extends Component {
                             renderItem={({item}) => <Item item={item}/>}
                         />
                         <BottomPopUp
-                            title="Filters"
+                            title="Impostazioni filtri"
                             ref={(target) => popupRef = target}
                             onTouchOutside={onClosePop}
                         />

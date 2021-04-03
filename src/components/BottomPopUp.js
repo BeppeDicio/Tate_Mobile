@@ -1,13 +1,16 @@
 import React, {Component} from "react";
-import {Dimensions, Modal, Text, TouchableWithoutFeedback, View} from "react-native";
+import { Dimensions, Modal, Text, TouchableWithoutFeedback, View} from "react-native";
+import {ButtonGroup, Button} from "react-native-elements";
 
 const deviceHeight = Dimensions.get("window").height
 export class BottomPopUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: false
+            show: false,
+            selectedIndex: 0
         }
+        this.updateIndex = this.updateIndex.bind(this)
     }
 
     show = () => {
@@ -36,8 +39,9 @@ export class BottomPopUp extends Component {
             <View>
                 <Text style={{
                     color: '#182E44',
-                    fontSize: 20,
+                    fontSize: 25,
                     fontWeight: '500',
+                    marginTop: 25,
                     margin: 15
                 }}>
                     {title}
@@ -46,17 +50,35 @@ export class BottomPopUp extends Component {
         )
     }
 
+    updateIndex (selectedIndex) {
+        this.setState({selectedIndex})
+    }
+
     renderContent = () => {
+        const buttons = ['Username', 'Email', 'Pagamento']
+        const { selectedIndex } = this.state
+
         return (
-            <View>
-                <Text>
-                    This is the content of the card view on the device that post upode_modules/react-native/Libraries/WebSocket/WebSocket.js:231:8 in _eventEmitter.addListener$argument_1
-                    - node_modules/react-native/Libraries/vendor/emitter/EventEmitter.js:189:10 in emit
-                    - node_modules/react-native/Libraries/BatchedBridge/MessageQueue.js:416:4 in __callFunction
-                    - node_modules/react-native/Libraries/BatchedBridge/MessageQueue.js:109:6 in __guard$argument_0
-                    - node_modules/react-native/Libraries/BatchedBridge/MessageQueue.js:364:10 in __guard
-                    - node_modules/react-native/Libraries/BatchedBridge/MessageQueue.js
-                </Text>
+            <View style={{
+                marginBottom: 60
+            }}>
+                <Text style={{
+                    color: '#182E44',
+                    fontSize: 18,
+                    fontWeight: '500',
+                    margin: 15
+                }}>Filtra per:</Text>
+                <ButtonGroup
+                    onPress={this.updateIndex}
+                    selectedIndex={selectedIndex}
+                    buttons={buttons}
+                    containerStyle={{height: 30}}
+                />
+                <Button
+                    title="Applica"
+                    type="solid"
+                    style={{marginTop: 50, marginLeft: 15, marginRight: 15}}
+                />
             </View>
         )
     }
