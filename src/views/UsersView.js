@@ -38,22 +38,35 @@ export default class UserView extends Component {
         this.state = {
             isLoading: true,
             dataSource: [],
+            page: 1
         }
     }
 
     componentDidMount() {
-        this.fetchData()
+        this.fetchData(this.state.page)
             .catch((error) => {
                 console.log(`Error: ${error}`)
             });
     }
 
+    fetchMoreUsers = () => {
+        this.setState(
+            prevState => ({
+                page: prevState.page + 1,
+            }),
+            () => {
+                this.fetchData();
+            },
+        );
+    };
+
     fetchData = async () => {
-        const response = await fetch('https://mz37bp4toc.execute-api.eu-west-1.amazonaws.com/challenge/users');
+        const response = await fetch(`https://mz37bp4toc.execute-api.eu-west-1.amazonaws.com/challenge/users?page=${this.state.page}`);
         const json = await response.json();
+
         this.setState({
             isLoading: false,
-            dataSource: json.Users
+            dataSource: this.state.dataSource.concat(json.Users)
         });
     }
 
@@ -94,6 +107,8 @@ export default class UserView extends Component {
                         <FlatList style={styles.flatl}
                             data={this.state.dataSource}
                             keyExtractor={(x, i) => i}
+                            onEndReached={this.fetchMoreUsers}
+                            onEndReachedThreshold={0.5}
                             renderItem={({item}) => <Item item={item}/>}
                         />
                         <BottomPopUp
