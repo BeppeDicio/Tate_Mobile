@@ -9,18 +9,19 @@ import {
 } from "react-native";
 import {BottomPopUp} from "../components/BottomPopUp";
 import {SimpleLineIcons} from "@expo/vector-icons";
+import { AntDesign } from '@expo/vector-icons';
 
 function Item({ item }) {
     const defaultPaymentObj = item.PaymentMethods.find(findDefaultPayment)
     return (
         <View style={styles.listItem}>
             <Image source={require('../resources/gamer.png')}  style={{width:60, height:60,borderRadius:30}} />
-            <View style={{alignItems:"center",flex:1}}>
+            <View style={{alignItems:"center",flex:1, justifyContent:"center"}}>
                 <Text style={{fontWeight:"bold"}}>{item.username}</Text>
                 <Text>{defaultPaymentObj.type}</Text>
             </View>
-            <TouchableOpacity style={{height:50,width:50, justifyContent:"center",alignItems:"center"}}>
-                <Text style={{color:"green"}}>Call</Text>
+            <TouchableOpacity style={{height:60,width:60, justifyContent:"center",alignItems:"center"}}>
+                <AntDesign name="rightcircleo" size={24} color="#707070" />
             </TouchableOpacity>
         </View>
     );
@@ -113,11 +114,8 @@ UserView.navigationOptions = {
 
 const styles= StyleSheet.create({
     container: {
-        /*flex: 1,
-        alignSelf: 'stretch',
-        backgroundColor: '#ffffff',*/
         flex: 1,
-        backgroundColor: '#F7F7F7',
+        backgroundColor: '#FFFFFF',
         marginTop:60,
     },
     item: {
@@ -130,6 +128,7 @@ const styles= StyleSheet.create({
     },
     flatl: {
         alignSelf: 'stretch',
+        backgroundColor: '#F7F7F7',
     },
     header: {
         height: 60,
@@ -156,7 +155,7 @@ const styles= StyleSheet.create({
         margin:10,
         padding:10,
         backgroundColor:"#FFF",
-        width:"80%",
+        width:"85%",
         flex:1,
         alignSelf:"center",
         flexDirection:"row",
