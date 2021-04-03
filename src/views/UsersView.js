@@ -10,20 +10,27 @@ import {
 import {BottomPopUp} from "../components/BottomPopUp";
 import {SimpleLineIcons} from "@expo/vector-icons";
 import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 function Item({ item }) {
     const defaultPaymentObj = item.PaymentMethods.find(findDefaultPayment)
     return (
+        <TouchableOpacity >
         <View style={styles.listItem}>
             <Image source={require('../resources/gamer.png')}  style={{width:60, height:60,borderRadius:30}} />
             <View style={{alignItems:"center",flex:1, justifyContent:"center"}}>
                 <Text style={{fontWeight:"bold"}}>{item.username}</Text>
                 <Text>{defaultPaymentObj.type}</Text>
             </View>
-            <TouchableOpacity style={{height:60,width:60, justifyContent:"center",alignItems:"center"}}>
-                <AntDesign name="rightcircleo" size={24} color="#707070" />
-            </TouchableOpacity>
+            <View style={{height:60,width:60, justifyContent:"center",alignItems:"center"}}>
+                <AntDesign
+                    name="rightcircleo"
+                    size={24}
+                    color="#707070"
+                />
+            </View>
         </View>
+        </TouchableOpacity>
     );
 }
 
@@ -98,9 +105,11 @@ export default class UserView extends Component {
                             <View style={styles.headerBox}>
                                 <Text style={styles.headerText}>Utenti Attivi</Text>
                             </View>
-                            <View style={styles.headerButtonBox}>
-                                <TouchableOpacity onPress={onShowPopup} style={{height:50,width:50, justifyContent:"center",alignItems:"center"}}>
-                                    <Text>Filtri</Text>
+                            <View style={{flex: 1, alignSelf: 'stretch', alignItems:"flex-end"}}>
+                                <TouchableOpacity
+                                    onPress={onShowPopup}
+                                    style={{height:40,width:80, justifyContent:"center", alignItems:"center"}}>
+                                    <Entypo name="sound-mix" size={24} color="black" />
                                 </TouchableOpacity>
                             </View>
                         </View>
