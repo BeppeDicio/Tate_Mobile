@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ac7f795-c03f-44ef-a5cc-c0955d970c20" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/views/UserDetailView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/UsersView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/UsersView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +40,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/views" />
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/resources" />
     </key>
   </component>
@@ -58,7 +62,9 @@
       <workItem from="1617373208523" duration="487000" />
       <workItem from="1617381217253" duration="5698000" />
       <workItem from="1617456267660" duration="5902000" />
-      <workItem from="1617478510409" duration="1417000" />
+      <workItem from="1617478510409" duration="2021000" />
+      <workItem from="1617721084178" duration="4166000" />
+      <workItem from="1617739536478" duration="935000" />
     </task>
     <servers />
   </component>

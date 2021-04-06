@@ -1,23 +1,22 @@
 import React, {Component, useState, useEffect} from "react";
 import {
-    StyleSheet,
-    Text,
-    View,
-    FlatList,
-    ActivityIndicator,
-    SafeAreaView, Button, Image, TouchableOpacity
+    StyleSheet, Text, View,
+    FlatList, ActivityIndicator,
+    SafeAreaView, Image, TouchableOpacity
 } from "react-native";
 import {BottomPopUp} from "../components/BottomPopUp";
 import {SimpleLineIcons} from "@expo/vector-icons";
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import UserDetailView from "./UserDetailView";
 
 function Item({ item }) {
     const defaultPaymentObj = item.PaymentMethods.find(findDefaultPayment)
+
     return (
-        <TouchableOpacity >
+        <TouchableOpacity>
         <View style={styles.listItem}>
-            <Image source={require('../resources/gamer.png')}  style={{width:60, height:60,borderRadius:30}} />
+            <Image source={require('../resources/gamer.png')} style={{width:60, height:60,borderRadius:30}} />
             <View style={{alignItems:"center",flex:1, justifyContent:"center"}}>
                 <Text style={{fontWeight:"bold"}}>{item.username}</Text>
                 <Text>{defaultPaymentObj.type}</Text>
@@ -133,7 +132,7 @@ export default class UserView extends Component {
 }
 
 UserView.navigationOptions = {
-    tabBarIcon: <SimpleLineIcons name="people" size={18} />
+    tabBarIcon: <SimpleLineIcons name="people" size={18} color="#4CA2FF"/>
 };
 
 const styles= StyleSheet.create({
@@ -186,4 +185,3 @@ const styles= StyleSheet.create({
         borderRadius:5
     }
 })
-
