@@ -2,13 +2,13 @@ import React, {Component, useState, useEffect} from "react";
 import {
     StyleSheet, Text, View,
     FlatList, ActivityIndicator,
-    SafeAreaView, Image, TouchableOpacity
+    SafeAreaView, Image, TouchableOpacity,Button
 } from "react-native";
 import {BottomPopUp} from "../components/BottomPopUp";
 import {SimpleLineIcons} from "@expo/vector-icons";
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-import UserDetailView from "./UserDetailView";
+import { MaterialIcons } from '@expo/vector-icons';
 
 function Item({ item }) {
     const defaultPaymentObj = item.PaymentMethods.find(findDefaultPayment)
@@ -46,14 +46,30 @@ export default class UserView extends Component {
             isRefreshing: false,
             dataSource: [],
             page: 1,
+            firstLoadError: 0
         }
     }
 
     componentDidMount() {
         this.fetchData(this.state.page)
             .catch((error) => {
-                console.log(`Error: ${error}`)
+                this.setState({firstLoadError: this.state.firstLoadError + 1, isLoading: false})
+                console.log(`Error: ${error} || firstLoadError number: ${this.state.firstLoadError}`)
             });
+    }
+
+    reloadData = () => {
+        this.setState({
+                isLoading: true,
+                firstLoadError: 0
+            },
+            () => {
+                this.fetchData()
+                    .catch((error) => {
+                        console.log(`Error by reloadData: ${error}`)
+                        this.setState({isLoading: false, firstLoadError: 1})
+                    });
+            })
     }
 
     dataRefresh = () => {
@@ -107,6 +123,22 @@ export default class UserView extends Component {
                 <View style={styles.container}>
                     <ActivityIndicator/>
                 </View>
+            )
+        } else if (this.state.firstLoadError === 1){
+            return(
+                <SafeAreaView style={styles.errorView}>
+                    <View>
+
+                        <MaterialIcons name="error-outline" size={80} color="red" style={styles.errorIcon}/>
+                        <Text style={styles.errorText}>
+                            Sembra che qualcosa non abbia funzionato! Riprova a caricare la pagina o passa a trovarci più tardi!
+                        </Text>
+                        <Button
+                            title={'Ricarica pagina'}
+                            onPress={this.reloadData}
+                        />
+                    </View>
+                </SafeAreaView>
             )
         } else {
             return (
@@ -200,5 +232,19 @@ const styles= StyleSheet.create({
         alignSelf:"center",
         flexDirection:"row",
         borderRadius:5
+    },
+    errorView: {
+        flex: 1,
+        alignSelf: 'stretch',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    errorIcon: {
+        textAlign: 'center',
+        marginBottom: 20
+    },
+    errorText: {
+        textAlign: 'center',
+        margin: 20,
     }
 })
