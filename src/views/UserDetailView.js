@@ -12,6 +12,13 @@ export default class UserDetailView extends Component {
 
     render() {
         const {item} = this.props.navigation.state.params;
+        const paymentList = item.PaymentMethods;
+
+        paymentList.sort(function(x, y) {
+            // true values first
+            return (y.default - x.default);
+        });
+
         return(
             <SafeAreaView>
                 <View style={styles.header}>
@@ -42,7 +49,7 @@ export default class UserDetailView extends Component {
                 <FlatList style={styles.flatl}
                   horizontal={true}
                   showsHorizontalScrollIndicator={false}
-                  data={item.PaymentMethods}
+                  data={paymentList}
                   keyExtractor={(x, i) => i}
                   renderItem={({item}) => {
                       return (
@@ -134,8 +141,8 @@ const styles= StyleSheet.create({
     listItem:{
         margin: 10,
         padding:10,
-        height: 90,
-        width: 160,
+        height: 100,
+        width: 180,
         borderRadius:15,
         backgroundColor:"#4a566b",
         alignSelf:"center",
