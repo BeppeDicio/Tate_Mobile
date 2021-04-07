@@ -43,8 +43,9 @@ export default class UserView extends Component {
         super(props);
         this.state = {
             isLoading: true,
+            isRefreshing: false,
             dataSource: [],
-            page: 1
+            page: 1,
         }
     }
 
@@ -53,6 +54,19 @@ export default class UserView extends Component {
             .catch((error) => {
                 console.log(`Error: ${error}`)
             });
+    }
+
+    dataRefresh = () => {
+        this.setState({
+                isRefreshing: true
+            },
+            () => {
+                this.fetchData()
+                    .catch((error) => {
+                        console.log(`Error by refreshing: ${error}`)
+                        this.setState({isRefreshing: false})
+                    });
+            })
     }
 
     fetchMoreUsers = () => {
@@ -72,6 +86,7 @@ export default class UserView extends Component {
 
         this.setState({
             isLoading: false,
+            isRefreshing: false,
             dataSource: this.state.dataSource.concat(json.Users)
         });
     }
@@ -115,6 +130,8 @@ export default class UserView extends Component {
                         <FlatList style={styles.flatl}
                             data={this.state.dataSource}
                             keyExtractor={(x, i) => i}
+                            onRefresh={this.dataRefresh}
+                            refreshing={this.state.isRefreshing}
                             onEndReached={this.fetchMoreUsers}
                             onEndReachedThreshold={0.5}
                             renderItem={({item}) => <Item item={item}/>}
