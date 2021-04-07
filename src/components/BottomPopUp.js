@@ -78,6 +78,7 @@ export class BottomPopUp extends Component {
                     title="Applica"
                     type="solid"
                     style={{marginTop: 50, marginLeft: 15, marginRight: 15}}
+                    onPress={this.close}
                 />
             </View>
         )
