@@ -124,7 +124,7 @@ const styles= StyleSheet.create({
     cardTypeText: {
         margin: 5,
         textAlign: 'center',
-        fontSize: 18,
+        fontSize: 15,
         alignSelf: 'center',
         color:'#ffffff'
     },
