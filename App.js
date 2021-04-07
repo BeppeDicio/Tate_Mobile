@@ -11,6 +11,7 @@ const switchNavigator = createSwitchNavigator({
     UsersView: UsersView
   }),
   UserDView: UserDetailView
+
 });
 
 const App = createAppContainer(switchNavigator);

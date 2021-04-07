@@ -14,7 +14,6 @@ function Item({ item }) {
     const defaultPaymentObj = item.PaymentMethods.find(findDefaultPayment)
 
     return (
-        <TouchableOpacity>
         <View style={styles.listItem}>
             <Image source={require('../resources/gamer.png')} style={{width:60, height:60,borderRadius:30}} />
             <View style={{alignItems:"center",flex:1, justifyContent:"center"}}>
@@ -29,7 +28,6 @@ function Item({ item }) {
                 />
             </View>
         </View>
-        </TouchableOpacity>
     );
 }
 
@@ -128,7 +126,6 @@ export default class UserView extends Component {
             return(
                 <SafeAreaView style={styles.errorView}>
                     <View>
-
                         <MaterialIcons name="error-outline" size={80} color="red" style={styles.errorIcon}/>
                         <Text style={styles.errorText}>
                             Sembra che qualcosa non abbia funzionato! Riprova a caricare la pagina o passa a trovarci più tardi!
@@ -166,7 +163,13 @@ export default class UserView extends Component {
                             refreshing={this.state.isRefreshing}
                             onEndReached={this.fetchMoreUsers}
                             onEndReachedThreshold={0.5}
-                            renderItem={({item}) => <Item item={item}/>}
+                            renderItem={({item}) => {
+                                return(
+                                    <TouchableOpacity onPress={() => this.props.navigation.navigate('UserDView', {item})}>
+                                        <Item item={item}/>
+                                    </TouchableOpacity>
+                                )
+                            }}
                         />
                         <BottomPopUp
                             title="Impostazioni filtri"
@@ -187,8 +190,9 @@ UserView.navigationOptions = {
 const styles= StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'center',
         backgroundColor: '#FFFFFF',
-        marginTop:60,
+        //marginTop:60,
     },
     item: {
         height: 80,
