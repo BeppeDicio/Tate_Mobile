@@ -10,6 +10,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import {fetchUsersPage} from '../services/users'
+import SearchBar from "../components/SearchBar";
 
 function Item({ item }) {
     const defaultPaymentObj = item.PaymentMethods.find(findDefaultPayment)
@@ -157,6 +158,11 @@ export default class UserView extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
+                        <SearchBar
+                            //term={term}
+                            //onTermChange={setTerm}
+                            //onTermSubmit={() => searchApi(term)}
+                        />
                         <FlatList style={styles.flatl}
                             data={this.state.dataSource}
                             keyExtractor={(x, i) => i}
