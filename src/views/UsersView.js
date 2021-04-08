@@ -1,7 +1,7 @@
 import React, {Component, useState, useEffect} from "react";
 import {
     StyleSheet, Text, View,
-    FlatList, ActivityIndicator,
+    FlatList, ActivityIndicator, TextInput,
     SafeAreaView, Image, TouchableOpacity,Button
 } from "react-native";
 import {BottomPopUp} from "../components/BottomPopUp";
@@ -10,7 +10,11 @@ import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import {fetchUsersPage} from '../services/users'
-import SearchBar from "../components/SearchBar";
+import {Input, SearchBar} from "react-native-elements";
+import _ from "lodash";
+import {contains} from "../utility/FilterUtility";
+import { Ionicons } from '@expo/vector-icons';
+
 
 function Item({ item }) {
     const defaultPaymentObj = item.PaymentMethods.find(findDefaultPayment)
@@ -46,7 +50,9 @@ export default class UserView extends Component {
             isRefreshing: false,
             dataSource: [],
             page: 1,
-            firstLoadError: 0
+            firstLoadError: 0,
+            query: "",
+            fullData: [],
         }
     }
 
@@ -103,9 +109,20 @@ export default class UserView extends Component {
         this.setState({
             isLoading: false,
             isRefreshing: false,
-            dataSource: this.state.dataSource.concat(json.Users)
+            dataSource: this.state.dataSource.concat(json.Users),
+            fullData: this.state.dataSource.concat(json.Users)
         });
     }
+
+    handleSearch = (text) => {
+        const formatQuery = text.toLowerCase();
+        const data = _.filter(this.state.fullData, user => {
+            console.log(user);
+            return contains(user, formatQuery);
+        });
+        console.log(data);
+        this.setState({query: formatQuery, dataSource: data});
+    };
 
     render() {
 
@@ -158,14 +175,24 @@ export default class UserView extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <SearchBar
-                            //term={term}
-                            //onTermChange={setTerm}
-                            //onTermSubmit={() => searchApi(term)}
-                        />
+                        <View style={styles.backgroundStyle}>
+                            <Ionicons
+                                style={styles.iconStyle}
+                                name="search"
+                                color="black"
+                                alig="center"
+                            />
+                            <TextInput
+                                autoCorrect={false}
+                                style={styles.inputStyle}
+                                placeholder='Cerca Email'
+                                onChangeText={this.handleSearch}
+                            />
+                        </View>
+
                         <FlatList style={styles.flatl}
                             data={this.state.dataSource}
-                            keyExtractor={(x, i) => i}
+                            keyExtractor={(item) => item.id}
                             onRefresh={this.dataRefresh}
                             refreshing={this.state.isRefreshing}
                             onEndReached={this.fetchMoreUsers}
@@ -256,6 +283,25 @@ const styles= StyleSheet.create({
     errorText: {
         textAlign: 'center',
         margin: 20,
+    },
+    backgroundStyle: {
+        backgroundColor: '#F0EEEE',
+        height: 50,
+        borderRadius: 5,
+        marginHorizontal: 15,
+        flexDirection: 'row',
+        marginBottom: 15,
+        marginTop: 15
+    },
+    iconStyle: {
+        flex: 1,
+        fontSize: 30,
+        alignSelf: 'center',
+        margin: 10
+    },
+    inputStyle: {
+        flex: 9,
+        fontSize: 18
     }
 })
 
@@ -263,6 +309,10 @@ const styles= StyleSheet.create({
     La navigation bar è custom, sicuramente con più tempo sarebbe stato utile fare un componente a cui passare i parametri
     e costruirla più velocemente e sicuramente più manutenibile. Alternativa sarebbe satao usare la navigation bar di sistema,
     non ho trovato il modo di riattivarla. Dato il tempo non infinito ho deciso di trovare una strada alternativa con la costruzione da zero.
+
+    Nella search i primi risultati sono quelli della ricerca, se però l'elemento trovato è 1, allora si attiva la chiamata per
+    caricare gli utenti della pagina successiva. Se si commenta il contenuto del metodo fetchMoreUsers la ricerca sarà come ci si aspetta.
+    Il modo giusto per fare questa funzionalità sarebbe stato mte API
 
     Ho scelto di implementare l'infinity scroll anzichè la paginazione a pagine, perchè a mio avviso è molto più fluida e
     scaturisce un effetto Hooked maggiore che la soluzione a pagine che è un po noiosa e scomoda nella fruizione dei contenuti.
