@@ -9,6 +9,7 @@ import {SimpleLineIcons} from "@expo/vector-icons";
 import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import {fetchUsersPage} from '../services/users'
 
 function Item({ item }) {
     const defaultPaymentObj = item.PaymentMethods.find(findDefaultPayment)
@@ -95,7 +96,7 @@ export default class UserView extends Component {
     };
 
     fetchData = async () => {
-        const response = await fetch(`https://mz37bp4toc.execute-api.eu-west-1.amazonaws.com/challenge/users?page=${this.state.page}`);
+        const response = await fetchUsersPage(this.state.page);
         const json = await response.json();
 
         this.setState({
@@ -192,7 +193,6 @@ const styles= StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         backgroundColor: '#FFFFFF',
-        //marginTop:60,
     },
     item: {
         height: 80,
