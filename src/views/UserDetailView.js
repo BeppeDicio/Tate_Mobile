@@ -82,7 +82,8 @@ function Item({ item }) {
 
 const styles= StyleSheet.create({
     header: {
-        height: 60,
+        height: 50,
+        marginTop: 15,
         borderBottomWidth: 0.5,
         flexDirection: 'row',
 
@@ -95,7 +96,8 @@ const styles= StyleSheet.create({
         flex: 1
     },
     headerText: {
-        fontSize: 25,
+        fontSize: 20,
+        textAlign: 'center'
     },
     firstBlock: {
         flexDirection: 'row',

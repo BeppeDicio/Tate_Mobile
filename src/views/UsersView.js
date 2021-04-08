@@ -10,7 +10,6 @@ import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import {fetchUsersPage} from '../services/users'
-import {Input, SearchBar} from "react-native-elements";
 import _ from "lodash";
 import {contains} from "../utility/FilterUtility";
 import { Ionicons } from '@expo/vector-icons';
@@ -240,7 +239,8 @@ const styles= StyleSheet.create({
         backgroundColor: '#F7F7F7',
     },
     header: {
-        height: 60,
+        height: 50,
+        marginTop: 15,
         borderBottomWidth: 0.5,
         flexDirection: 'row',
 
@@ -253,7 +253,8 @@ const styles= StyleSheet.create({
         flex: 1
     },
     headerText: {
-        fontSize: 25,
+        fontSize: 20,
+        textAlign: 'center'
     },
     headerButton: {
         flex: 1,
@@ -319,5 +320,5 @@ const styles= StyleSheet.create({
 
     Sicuramente con più tempo sarebbe stato utile fare un po di refactoring della classe così da renderla più pulita e manutenibile.
     Mi piace molto costruire le view a blocchi pensando se alcuni widget possono essere riusati in altre parti dell'app, così
-    da riciclare più codice possibile.
+    da riciclare più codice possibile. Anche la parte di Style non è proprio ottimizzata.
  */
