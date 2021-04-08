@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ac7f795-c03f-44ef-a5cc-c0955d970c20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/FlatListItem.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utility/userUtilitys.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BottomPopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BottomPopUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FlatListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FlatListItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/UsersView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/UsersView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +37,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -70,7 +73,7 @@
       <workItem from="1617807313609" duration="9127000" />
       <workItem from="1617872344252" duration="6262000" />
       <workItem from="1617883081583" duration="2420000" />
-      <workItem from="1617885772818" duration="4505000" />
+      <workItem from="1617885772818" duration="9089000" />
     </task>
     <servers />
   </component>

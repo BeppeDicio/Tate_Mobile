@@ -27,11 +27,72 @@ export class BottomPopUp extends Component {
     }
 
     show = () => {
-        this.setState({show: true})
+        const {mainState} = this.props;
+        this.getOrderByManager(mainState);
+        this.setState({show: true});
     }
 
     close = () => {
-        this.setState({show: false})
+        this.setState({show: false});
+    }
+
+    onApply = () => {
+        const {mainState} = this.props;
+        this.setOrderByManager(this.state.selectedIndex, mainState);
+        this.setState({show: false});
+    }
+
+    getOrderByManager = (mainState) => {
+        if (mainState.state.sortByUsername) {
+            this.setState({
+                selectedIndex: 1
+            })
+        } else if (mainState.state.sortByEmail) {
+            this.setState({
+                selectedIndex: 2
+            })
+        } else if (mainState.state.sortByPayment) {
+            this.setState({
+                selectedIndex: 3
+            })
+        } else {
+            this.setState({
+                selectedIndex: 0
+            })
+        }
+    }
+
+    setOrderByManager = (index, mainState) => {
+        switch (index) {
+            case 1:
+                mainState.setState({
+                    sortByUsername: true,
+                    sortByEmail: false,
+                    sortByPayment: false
+                })
+                break;
+            case 2:
+                mainState.setState({
+                    sortByUsername: false,
+                    sortByEmail: true,
+                    sortByPayment: false
+                })
+                break;
+            case 3:
+                mainState.setState({
+                    sortByUsername: false,
+                    sortByEmail: false,
+                    sortByPayment: true
+                })
+                break;
+            default:
+                mainState.setState({
+                    sortByUsername: false,
+                    sortByEmail: false,
+                    sortByPayment: false
+                })
+                break;
+        }
     }
 
     renderOutsideTouchable(onTouch) {
@@ -68,7 +129,7 @@ export class BottomPopUp extends Component {
     }
 
     renderContent = () => {
-        const buttons = ['Username', 'Email', 'Pagamento']
+        const buttons = ['Nessuno','Username', 'Email', 'Pagamento']
         const { selectedIndex } = this.state
 
         return (
@@ -91,7 +152,7 @@ export class BottomPopUp extends Component {
                     title="Applica"
                     type="solid"
                     style={{marginTop: 50, marginLeft: 15, marginRight: 15}}
-                    onPress={this.close}
+                    onPress={this.onApply}
                 />
             </View>
         )

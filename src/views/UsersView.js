@@ -6,7 +6,6 @@ import {
 } from "react-native";
 import {BottomPopUp} from "../components/BottomPopUp";
 import {SimpleLineIcons} from "@expo/vector-icons";
-import { AntDesign } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import {fetchUsersPage} from '../services/users'
@@ -14,6 +13,7 @@ import _ from "lodash";
 import {contains} from "../utility/FilterUtility";
 import { Ionicons } from '@expo/vector-icons';
 import {Item} from '../components/FlatListItem'
+import {findDefaultPayment} from "../utility/userUtilitys";
 
 export default class UserView extends Component {
 
@@ -27,7 +27,23 @@ export default class UserView extends Component {
             firstLoadError: 0,
             query: "",
             fullData: [],
+            sortByEmail: false,
+            sortByUsername: false,
+            sortByPayment: false,
         }
+    }
+
+    orderBy = (users) => {
+
+        if(this.state.sortByEmail){
+            return users.sort((a,b) => a.email.localeCompare(b.email));
+        } else if (this.state.sortByUsername) {
+            return users.sort((a,b) => a.username.localeCompare(b.username));
+        } else if (this.state.sortByPayment) {
+            return users.sort((a,b) => (a.PaymentMethods.find(findDefaultPayment).type).localeCompare(b.PaymentMethods.find(findDefaultPayment).type));
+        }
+
+        return this.state.fullData;
     }
 
     componentDidMount() {
@@ -89,6 +105,11 @@ export default class UserView extends Component {
     }
 
     handleSearch = (text) => {
+        this.setState({
+            sortByUsername: false,
+            sortByEmail: false,
+            sortByPayment: false
+        })
         const formatQuery = text.toLowerCase();
         const data = _.filter(this.state.fullData, user => {
             console.log(user);
@@ -159,13 +180,12 @@ export default class UserView extends Component {
                             <TextInput
                                 autoCorrect={false}
                                 style={styles.inputStyle}
-                                placeholder='Cerca Email'
+                                placeholder='Cerca email'
                                 onChangeText={this.handleSearch}
                             />
                         </View>
-
                         <FlatList style={styles.flatl}
-                            data={this.state.dataSource}
+                            data={this.orderBy(this.state.dataSource)}
                             keyExtractor={(item) => item.id}
                             onRefresh={this.dataRefresh}
                             refreshing={this.state.isRefreshing}
@@ -182,6 +202,7 @@ export default class UserView extends Component {
                         <BottomPopUp
                             title="Impostazioni filtri"
                             ref={(target) => popupRef = target}
+                            mainState={this}
                             onTouchOutside={onClosePop}
                         />
                     </SafeAreaView>
@@ -286,4 +307,7 @@ const styles= StyleSheet.create({
     Sicuramente con più tempo sarebbe stato utile fare un po di refactoring della classe così da renderla più pulita e manutenibile.
     Mi piace molto costruire le view a blocchi pensando se alcuni widget possono essere riusati in altre parti dell'app, così
     da riciclare più codice possibile. Anche la parte di Style non è proprio ottimizzata.
+
+    Tutte le stringhe al momento sono hard coded, sarebbe utile creare un file text, così da predisporre il multilingua e facilitare
+    la manutenzione e cambiamenti dei testi in app.
  */

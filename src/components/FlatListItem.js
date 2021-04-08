@@ -1,11 +1,7 @@
 import {Image, StyleSheet, Text, View} from "react-native";
 import {AntDesign} from "@expo/vector-icons";
 import React from "react";
-
-
-function findDefaultPayment(paymants) {
-    return paymants.default === true;
-}
+import {findDefaultPayment} from "../utility/userUtilitys"
 
 export function Item({ item }) {
     const defaultPaymentObj = item.PaymentMethods.find(findDefaultPayment)
