@@ -21,9 +21,9 @@ function Item({ item }) {
     return (
         <View style={styles.listItem}>
             <Image source={require('../resources/gamer.png')} style={{width:60, height:60,borderRadius:30}} />
-            <View style={{alignItems:"center",flex:1, justifyContent:"center"}}>
+            <View style={{alignItems:"center",flex:1, justifyContent:"center", marginLeft: 5, marginRight: 5}}>
                 <Text style={{fontWeight:"bold"}}>{item.username}</Text>
-                <Text>{defaultPaymentObj.type}</Text>
+                <Text style={{textAlign: 'center'}}>{defaultPaymentObj.type}</Text>
             </View>
             <View style={{height:60,width:60, justifyContent:"center",alignItems:"center"}}>
                 <AntDesign
