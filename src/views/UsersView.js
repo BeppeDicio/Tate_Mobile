@@ -252,3 +252,16 @@ const styles= StyleSheet.create({
         margin: 20,
     }
 })
+
+/*
+    La navigation bar è custom, sicuramente con più tempo sarebbe stato utile fare un componente a cui passare i parametri
+    e costruirla più velocemente e sicuramente più manutenibile. Alternativa sarebbe satao usare la navigation bar di sistema,
+    non ho trovato il modo di riattivarla. Dato il tempo non infinito ho deciso di trovare una strada alternativa con la costruzione da zero.
+
+    Ho scelto di implementare l'infinity scroll anzichè la paginazione a pagine, perchè a mio avviso è molto più fluida e
+    scaturisce un effetto Hooked maggiore che la soluzione a pagine che è un po noiosa e scomoda nella fruizione dei contenuti.
+
+    Sicuramente con più tempo sarebbe stato utile fare un po di refactoring della classe così da renderla più pulita e manutenibile.
+    Mi piace molto costruire le view a blocchi pensando se alcuni widget possono essere riusati in altre parti dell'app, così
+    da riciclare più codice possibile.
+ */

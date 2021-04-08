@@ -149,3 +149,18 @@ const styles= StyleSheet.create({
         flexDirection:"row",
     },
 })
+
+/*
+    La navigation bar è custom, sicuramente con più tempo sarebbe stato utile fare un componente a cui passare i parametri
+    e costruirla più velocemente e sicuramente più manutenibile. Alternativa sarebbe satao usare la navigation bar di sistema,
+    non ho trovato il modo di riattivarla. Dato il tempo non infinito ho deciso di trovare una strada alternativa con la costruzione da zero.
+
+    La pagina è un po vuota, avendo più tempo avrei forse cercato una soluzione migliore per presentare i dati richiesti
+
+    ** ATTENZIONE **
+    Il bottone back mi turba abbastanza, andrebbe fixato, dato che quando torna indietro non torna alla vecchia situazione
+    ma ricarica la pagina. Questo è sicuramente scorretto logicamente. Ho letto che navigation.goBack() era la soluzione
+    giusta ma non funziona, sicuramente potrebbe dipendere da come è organizzato lo stack. In Native è un po diverso il
+    funzionamento. Da aprofondire!
+
+ */
