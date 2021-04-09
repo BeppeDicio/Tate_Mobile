@@ -294,12 +294,12 @@ const styles= StyleSheet.create({
 
 /*
     La navigation bar è custom, sicuramente con più tempo sarebbe stato utile fare un componente a cui passare i parametri
-    e costruirla più velocemente e sicuramente più manutenibile. Alternativa sarebbe satao usare la navigation bar di sistema,
+    e costruirla più velocemente e sicuramente più mantenibile. Alternativa sarebbe satao usare la navigation bar di sistema,
     non ho trovato il modo di riattivarla. Dato il tempo non infinito ho deciso di trovare una strada alternativa con la costruzione da zero.
 
-    Nella search i primi risultati sono quelli della ricerca, se però l'elemento trovato è 1, allora si attiva la chiamata per
+    Nella searchbar i primi risultati sono quelli della ricerca, se però gli elementi trovati sono vicini al punto di reload, allora si attiva la chiamata per
     caricare gli utenti della pagina successiva. Se si commenta il contenuto del metodo fetchMoreUsers la ricerca sarà come ci si aspetta.
-    Il modo giusto per fare questa funzionalità sarebbe stato mte API
+    Il modo giusto per fare questa funzionalità sarebbe stato mediante API
 
     Ho scelto di implementare l'infinity scroll anzichè la paginazione a pagine, perchè a mio avviso è molto più fluida e
     scaturisce un effetto Hooked maggiore che la soluzione a pagine che è un po noiosa e scomoda nella fruizione dei contenuti.

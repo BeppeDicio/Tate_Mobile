@@ -35,3 +35,9 @@ const styles= StyleSheet.create({
         borderRadius: 5
     }
 });
+
+/*
+    Anche in questo caso creare Item come un componente generico sarebbe stato utile, dato che poi nella detail view
+    ho ricreato item custom per quella situazione. Con un piccolo re-work potrebbe essere generalizzato e quindi avere
+    un componente Item da riusare nelle varie FlatList
+ */

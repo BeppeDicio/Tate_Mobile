@@ -3,16 +3,13 @@ import { Dimensions, Modal, Text, TouchableWithoutFeedback, View} from "react-na
 import {ButtonGroup, Button} from "react-native-elements";
 
 /*
-    **** ATTENZIONE ****
-    Al momento i filtri sono finti, nel senso che i bottoni non fanno nessuna azione. Questo perchè facendo via via le richieste
-    delle nuove pagine degli utenti, non è molto comodo filtrarli o ordinarli. Per fare ciò sarebbe a mio avviso più corretto
-    creare una chiamata API che ti restituisca un elenco già ordinato come vuole l'utente, passando i vari parameri nella richiasta.
-    L'altrernativa sarebbe fare una iterazione scaricando tutte le pagine esistenti e poi applicare i vari filtri su quella lista.
-    Questo è un grande spreco a mio avviso perchè l'utente scarica una quantità di dati che quasi sicuramente non gli serviranno.
-    L'ordinare mano mano che si scaricano i dati è un errore che potrebbe turbare l'utente, questo perchè se io ordino ad esempio in ordine
-    alfabetico la prima pagina, quando scarico la seconda pagina devo aggiornare la lista e riordinarla, e questo comporta
-    uno stress all'utente, perchè o gli vengono aggiunti nuove righe sia sopra che sotto o un azione lo riporta in cima alla lista
-    e lui è costretto a rincominciare da capo.
+    Come descritto anche nella challenge, la via più corretta sarebbe applicare i vari filtri con delle API,
+    questo perchè come succede in questo caso, scrollando verso il basso vengono scaricate nuove pagine e
+    viene riapplicato automaticamente l'ordinamento, l'utente si trova i nuovi dati scaricati un po sopra e un
+    po sotto al suo attuale punto di scroll.
+    Andrebbero gestiti meglio la gestione delle azioni da parte di eventi esterni dei filtri. Come ad esempio ho
+    impostato che quando noi applichiamo un filtro ma poi cerchiamo per email, il filtro viene annullato, questo perchè potrebbe
+    essere più comodo per l'utente. Un'altra possibile soluzione sarebbe stato la gestione contemporanea tra filtro e ricerca.
  */
 
 const deviceHeight = Dimensions.get("window").height
@@ -148,10 +145,11 @@ export class BottomPopUp extends Component {
                     buttons={buttons}
                     containerStyle={{height: 30}}
                 />
+                <View style={{height: 35}}></View>
                 <Button
                     title="Applica"
                     type="solid"
-                    style={{marginTop: 50, marginLeft: 15, marginRight: 15}}
+                    style={{marginLeft: 15, marginRight: 15}}
                     onPress={this.onApply}
                 />
             </View>
