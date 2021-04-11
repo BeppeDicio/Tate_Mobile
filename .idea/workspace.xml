@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3ac7f795-c03f-44ef-a5cc-c0955d970c20" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BottomPopUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BottomPopUp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FlatListItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FlatListItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/UserDetailView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/UserDetailView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/UsersView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/UsersView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +72,9 @@
       <workItem from="1617883081583" duration="2420000" />
       <workItem from="1617885772818" duration="10502000" />
       <workItem from="1617952869650" duration="785000" />
+      <workItem from="1617968324474" duration="2606000" />
+      <workItem from="1618056607863" duration="418000" />
+      <workItem from="1618128115564" duration="389000" />
     </task>
     <servers />
   </component>
