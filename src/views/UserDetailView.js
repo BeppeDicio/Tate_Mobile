@@ -13,7 +13,6 @@ export default class UserDetailView extends Component {
     render() {
         const {item} = this.props.navigation.state.params;
         const paymentList = item.PaymentMethods;
-        const { state, navigate } = this.props.navigation;
 
         paymentList.sort(function(x, y) {
             // true values first
@@ -25,7 +24,7 @@ export default class UserDetailView extends Component {
                 <View style={styles.header}>
                     <View style={{flex: 1, alignSelf: 'stretch', alignItems:"flex-start"}}>
                         <TouchableOpacity
-                            onPress={() => { navigate('UsersView', { go_back_key: state.key })}}
+                            onPress={() => this.props.navigation.navigate('UsersView')}
                             style={{height:40,width:80, justifyContent:"center", alignItems:"center"}}>
                             <Entypo name="chevron-thin-left" size={24} color="black" />
                         </TouchableOpacity>
@@ -162,6 +161,8 @@ const styles= StyleSheet.create({
     La pagina è un po vuota, con più tempo avrei forse cercato una soluzione migliore per presentare i dati richiesti
 
     ** ATTENZIONE **
-    Il bottone back ora torna indietro con la logica di stack più correttamente della precedente versione. Andrebbe gestito comunque il fatto
-    del refresh quando si atterra nella UserView e far si che l'utente si trovi nello stesso punto dello scroll di quando ha cliccato sulla row.
+    Il bottone back mi turba abbastanza, andrebbe fixato, dato che quando torna indietro non torna alla vecchia situazione
+    ma ricarica la pagina. Questo è sicuramente scorretto logicamente. Ho letto che navigation.goBack() era la soluzione
+    giusta ma non funziona, potrebbe dipendere da come è organizzato lo stack. In Native è un po diverso il funzionamento. Da aprofondire!
+
  */
