@@ -6,11 +6,10 @@ import UsersView from "./src/views/UsersView";
 import UserDetailView from "./src/views/UserDetailView";
 
 const switchNavigator = createSwitchNavigator({
-
-  mainFlow: createBottomTabNavigator({
-    UsersView: UsersView
-  }),
-  UserDView: UserDetailView
+    User: createStackNavigator({
+      UsersView: UsersView,
+      UserDView: UserDetailView
+    })
 
 });
 

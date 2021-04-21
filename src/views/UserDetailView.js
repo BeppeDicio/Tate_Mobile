@@ -21,21 +21,6 @@ export default class UserDetailView extends Component {
 
         return(
             <SafeAreaView>
-                <View style={styles.header}>
-                    <View style={{flex: 1, alignSelf: 'stretch', alignItems:"flex-start"}}>
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('UsersView')}
-                            style={{height:40,width:80, justifyContent:"center", alignItems:"center"}}>
-                            <Entypo name="chevron-thin-left" size={24} color="black" />
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.headerBox}>
-                        <Text style={styles.headerText}>Utenti Attivi</Text>
-                    </View>
-                    <View style={styles.headerBox}>
-                        <Text style={styles.headerText}></Text>
-                    </View>
-                </View>
                 <View style={styles.firstBlock}>
                     <Image
                         source={require('../resources/gamer.png')}
@@ -153,16 +138,5 @@ const styles= StyleSheet.create({
 })
 
 /*
-    La navigation bar è custom, sicuramente con più tempo sarebbe stato utile fare un componente a cui passare i parametri
-    e costruirla più velocemente, rendendola sicuramente più manutenibile. Alternativa sarebbe satao usare la navigation bar di sistema,
-    non ho trovato il modo di riattivarla. Dato il tempo non infinito ho deciso di trovare una strada alternativa, che mi sembrava più veloce
-    con la costruzione da zero.
-
     La pagina è un po vuota, con più tempo avrei forse cercato una soluzione migliore per presentare i dati richiesti
-
-    ** ATTENZIONE **
-    Il bottone back mi turba abbastanza, andrebbe fixato, dato che quando torna indietro non torna alla vecchia situazione
-    ma ricarica la pagina. Questo è sicuramente scorretto logicamente. Ho letto che navigation.goBack() era la soluzione
-    giusta ma non funziona, potrebbe dipendere da come è organizzato lo stack. In Native è un po diverso il funzionamento. Da aprofondire!
-
  */
